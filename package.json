@@ -1,0 +1,26 @@
+{
+  "name": "spacex-lauch-stats",
+  "version": "1.0.0",
+  "description": "App that lists SpaceX launch missions",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "server": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ALONPC/spacex-launch-stats.git"
+  },
+  "author": "Al",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ALONPC/spacex-launch-stats/issues"
+  },
+  "homepage": "https://github.com/ALONPC/spacex-launch-stats#readme",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "express": "^4.16.4",
+    "express-graphql": "^0.7.1",
+    "graphql": "^14.0.2"
+  }
+}
