@@ -1,10 +1,14 @@
 const express = require("express");
 const graphqlHTTP = require("express-graphql");
 const schema = require("./schema");
+const cors = require("cors");
 
 const server = express();
 const PORT = process.env.PORT || 5000; // Process environment port in case we use heroku or 5000
 const rocket = "\u{1F680}";
+
+// Allow cross-origin (Communication between server and client)
+server.use(cors());
 
 server.use(
   "/graphql",
