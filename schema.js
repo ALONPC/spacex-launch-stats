@@ -43,7 +43,58 @@ const RootQuery = new GraphQLObjectType({
           .get("https://api.spacexdata.com/v3/launches")
           .then(res => res.data)
           .catch(err =>
-            console.log("There has been an error!" + "\u{274C}", err)
+            console.log(
+              "There has been an error with launches!" + "\u{274C}",
+              err
+            )
+          );
+      }
+    },
+    launch: {
+      type: LaunchType,
+      args: {
+        flight_number: { type: GraphQLInt }
+      },
+      resolve(parent, args) {
+        return axios
+          .get(`https://api.spacexdata.com/v3/launches/${args.flight_number}`)
+          .then(res => res.data)
+          .catch(err =>
+            console.log(
+              "There has been an error with launch!" + "\u{274C}",
+              err
+            )
+          );
+      }
+    },
+    rockets: {
+      type: new GraphQLList(RocketType),
+      resolve(parent, args) {
+        return axios
+          .get("https://api.spacexdata.com/v3/rockets")
+          .then(res => res.data)
+          .catch(err =>
+            console.log(
+              "There has been an error with rockets!" + "\u{274C}",
+              err
+            )
+          );
+      }
+    },
+    rocket: {
+      type: RocketType,
+      args: {
+        id: { type: GraphQLInt }
+      },
+      resolve(parent, args) {
+        return axios
+          .get(`https://api.spacexdata.com/v3/rockets/${args.id}`)
+          .then(res => res.data)
+          .catch(err =>
+            console.log(
+              "There has been an error with rocket!" + "\u{274C}",
+              err
+            )
           );
       }
     }
