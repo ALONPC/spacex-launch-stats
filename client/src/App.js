@@ -23,7 +23,8 @@ class App extends Component {
               width: 400,
               display: "block",
               margin: "auto",
-              marginTop: "1em"
+              marginTop: "1em",
+              marginBottom: "1em"
             }}
           />
           <Launches />
