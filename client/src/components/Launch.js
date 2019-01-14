@@ -1,4 +1,5 @@
 import React from "react";
+import Moment from "react-moment";
 
 const success = "To infinity and beyond! \u{1F680}";
 const failure = "Press F to pay respects \u{1F480}";
@@ -26,7 +27,11 @@ export default function Launch(props) {
           <h4>
             {props.launch.mission_name} ({props.launch.launch_year})
           </h4>
-          <h6>{props.launch.launch_date_local}</h6>
+          <h6>
+            <Moment format="YYYY-MM-DD HH:mm">
+              {props.launch.launch_date_local}
+            </Moment>
+          </h6>
         </div>
         <div className="card-header col-md-4">
           <button className="btn btn-secondary">Launch details</button>
