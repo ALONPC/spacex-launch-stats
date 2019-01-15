@@ -15,26 +15,25 @@ export default function Launch(props) {
       }
     >
       <div className="row">
-        <div className="card-header col-md-8">
-          <span
-            className={
-              props.launch.launch_success
-                ? "badge badge-light"
-                : "badge badge-secondary"
-            }
-          >
-            {props.launch.launch_success ? success : failure}
-          </span>
-          <h4>
+        <div className="card-header col-md-10">
+          <h4 className="display-3">
             {props.launch.mission_name} ({props.launch.launch_year})
           </h4>
-          <h6>
-            <Moment format="YYYY-MM-DD HH:mm">
-              {props.launch.launch_date_local}
-            </Moment>
-          </h6>
+          <div className="row ml-1">
+            {" "}
+            <h6>
+              <span className={"badge badge-secondary"}>
+                {props.launch.launch_success ? success : failure}
+              </span>{" "}
+              <span className={"badge badge-light"}>
+                <Moment format="YYYY-MM-DD HH:mm">
+                  {props.launch.launch_date_local}
+                </Moment>
+              </span>
+            </h6>
+          </div>
         </div>
-        <div className="card-header col-md-4">
+        <div className="card-header col-md-2 text-right">
           <Link
             to={`/launch/${props.launch.flight_number}`}
             className="btn btn-secondary"

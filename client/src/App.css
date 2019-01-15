@@ -1,3 +1,15 @@
 html {
   margin: 10px;
 }
+
+.detailTable {
+  font-size: 1rem;
+}
+
+.detailTable .detailItem {
+  font-weight: 500;
+}
+
+.launchDetails {
+  margin: auto;
+}

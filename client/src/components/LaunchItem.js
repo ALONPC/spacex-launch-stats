@@ -1,8 +1,8 @@
 import React, { Component, Fragment } from "react";
 import gql from "graphql-tag";
 import { Query } from "react-apollo";
-import { Link } from "react-router";
 import classNames from "classnames";
+import { Link } from "react-router-dom";
 
 const LAUNCH_QUERY = gql`
   query LaunchQuery($flight_number: Int!) {
@@ -34,84 +34,88 @@ export class LaunchItem extends Component {
               if (error) console.log(error);
               console.log(data);
 
-              //   const {
-              //     mission_name,
-              //     flight_number,
-              //     launch_year,
-              //     launch_success,
-              //     rocket: { rocket_id, rocket_name, rocket_type }
-              //   } = data.launch;
-
-              let laaunch = { ...data.launch };
-              console.log("LAUNCH SPREAD", laaunch);
-
               let launch = { ...data.launch };
-
-              let laaaunch = data.launch;
-              console.log("LAUNCH DEFINED", laaaunch);
+              console.log("LAUNCH SPREAD", launch);
 
               return (
                 <div className="container">
-                  {/* {laaaunch.forEach((item, key) => {
-                    console.log(item);
-                    console.log(key);
-                  })} */}
-                  <div className="row">
-                    {" "}
-                    <h4 className="display-4 mb-3">Launch details</h4>
+                  <div className="row my-lg-5">
+                    <div className="col-md-7">
+                      <h1 className="display-3 my-3">
+                        <span className="text-dark">Mission </span>{" "}
+                        {launch.mission_name}
+                      </h1>
+                    </div>
+
+                    <div className="col-md-5 detailTable">
+                      <ul className="list-group">
+                        <li className="list-group-item">
+                          Flight number:{" "}
+                          <span className="text-dark detailItem">
+                            {launch.flight_number}
+                          </span>
+                        </li>
+                        <li className="list-group-item">
+                          Launch year:{" "}
+                          <span className="text-dark detailItem">
+                            {launch.launch_year}
+                          </span>
+                        </li>
+                        <li className="list-group-item">
+                          Launch successful:{" "}
+                          <span
+                            className={classNames({
+                              "text-success detailItem": launch.launch_success,
+                              "text-danger detailItem": !launch.launch_success
+                            })}
+                          >
+                            {launch.launch_success
+                              ? "Yes \u{1F680}"
+                              : "No \u{1F480}"}
+                          </span>
+                        </li>
+                      </ul>
+                    </div>
                   </div>
+                  <br />
 
                   <div className="row">
-                    {" "}
-                    <h1 className="display-4 my-3">
-                      <span className="text-dark">Mission: </span>{" "}
-                      {launch.mission_name}
-                    </h1>
-                  </div>
+                    <div className="col-md-7">
+                      <h1 className="display-3 my-3">
+                        <span className="text-dark">Rocket </span>
+                        {launch.rocket.rocket_name}
+                      </h1>
+                    </div>
 
-                  <div className="row">
-                    <ul className="list-group">
-                      <li className="list-group-item">
-                        Flight number: {launch.flight_number}
-                      </li>
-                      <li className="list-group-item">
-                        Launch year: {launch.launch_year}
-                      </li>
-                      <li className="list-group-item">
-                        Launch successful:{" "}
-                        <span
-                          className={classNames({
-                            "text-success": launch.launch_success,
-                            "text-danger": !launch.launch_success
-                          })}
-                        >
-                          {launch.launch_success
-                            ? "Yes \u{1F680}"
-                            : "No \u{1F480}"}
-                        </span>
-                      </li>
-                    </ul>
+                    <div className="col-md-5 detailTable">
+                      <ul className="list-group">
+                        <li className="list-group-item">
+                          Rocket ID:{" "}
+                          <span className="text-dark detailItem">
+                            {launch.rocket.rocket_id}
+                          </span>
+                        </li>
+                        <li className="list-group-item">
+                          Rocket name:{" "}
+                          <span className="text-dark detailItem">
+                            {launch.rocket.rocket_name}
+                          </span>
+                        </li>
+                        <li className="list-group-item">
+                          Rocket type:{" "}
+                          <span className="text-dark detailItem">
+                            {launch.rocket.rocket_type}
+                          </span>
+                        </li>
+                      </ul>
+                    </div>
                   </div>
-
                   <div className="row">
-                    {" "}
-                    <h1 className="display-4 my-3">
-                      <span className="text-dark">Rocket details: </span>
-                    </h1>
-                  </div>
-
-                  <div className="row">
-                    <ul className="list-group">
-                      <li className="list-group-item">
-                        Rocket ID: {launch.rocket.rocket_id}
-                      </li>
-                      <li className="list-group-item">
-                        Rocket name: {launch.rocket.rocket_name}
-                      </li>
-                      <li className="list-group-item">
-                        Rocket type: {launch.rocket.rocket_type}
-                      </li>
-                    </ul>{" "}
+                    <div className="col-md-12 my-4 text-right">
+                      <Link to="/" className="btn btn-secondary">
+                        Home
+                      </Link>
+                    </div>
                   </div>
                 </div>
               );
