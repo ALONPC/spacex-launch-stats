@@ -12,3 +12,6 @@ With Concurrently deploys both client and server side (check package.json)
 
 # Template
 https://bootswatch.com/cyborg/
+
+# Based on Traversy Media tutorial
+https://www.youtube.com/watch?v=SEMTj8w04Z8
