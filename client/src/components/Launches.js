@@ -4,6 +4,7 @@ import { Query } from "react-apollo";
 
 import Launch from "./Launch";
 import MissionKey from "./MissionKey";
+import Loading from "./Loading";
 
 const LAUNCHES_QUERY = gql`
   query LaunchesQuery {
@@ -18,8 +19,6 @@ const LAUNCHES_QUERY = gql`
 `;
 
 export default class Launches extends Component {
-  state = {};
-
   render() {
     return (
       <Fragment>
@@ -30,7 +29,8 @@ export default class Launches extends Component {
           </div>
           <Query query={LAUNCHES_QUERY}>
             {({ loading, error, data }) => {
-              if (loading) return <h4>Loading...</h4>;
+              if (loading) return <Loading />;
+              // <h4 className="display-3">Loading...</h4>;
               if (error) console.log(error);
               console.log("Launches:", data);
 

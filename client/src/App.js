@@ -3,6 +3,7 @@ import "./App.css";
 import logo from "./logo.png";
 import Launches from "./components/Launches";
 import LaunchItem from "./components/LaunchItem";
+import Loading from "./components/Loading";
 
 import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "react-apollo";
@@ -30,6 +31,7 @@ class App extends Component {
                 marginBottom: "1em"
               }}
             />
+            <Route exact path="/loading" component={Loading} />
             <Route exact path="/" component={Launches} />
             <Route exact path="/launch/:flight_number" component={LaunchItem} />
           </div>
