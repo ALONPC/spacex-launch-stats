@@ -15,3 +15,6 @@ https://bootswatch.com/cyborg/
 
 # Based on Traversy Media tutorial
 https://www.youtube.com/watch?v=SEMTj8w04Z8
+
+If error, run 
+> npm install --save react react-dom react-scripts
